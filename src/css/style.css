@@ -1,1 +1,74 @@
 /* YOUR CSS HERE */
+.container {
+  max-width: 1280px;
+  width: 100%;
+  padding: 16px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+
+.product-image {
+  max-width: 100%;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+}
+
+.product-title {
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.product-desc {
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.product-addBtn {}
+
+
+/* Inside cart  */
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cart-image {
+  max-width: 80px;
+  width: 100%;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+}
+
+.cart-title {
+  font-size: 14px;
+}
+
+.cart-price {
+  font-size: 12px;
+}
+
+.cart-counter {
+  display: flex;
+  gap: 8px;
+}
