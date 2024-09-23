@@ -1,7 +1,27 @@
-import { Component } from "../common/Component";
+import { Component } from "../common/Component.js";
+import { Footer } from "./Footer.js";
+import { Header } from "./Header.js";
 
 export class App extends Component {
   render() {
-    
+    const appContainer = document.createElement('div')
+    appContainer.className = 'container'
+    appContainer.innerHTML = `
+    <div class='header_wrapper'></div>
+    <div class='content_wrapper'>
+      <main>
+        <h1>Shop</h1>
+      </main>
+    </div>
+    <div class='footer_wrapper'></div>
+    `
+
+    const header = new Header().render()
+    const footer = new Footer().render()
+
+    appContainer.querySelector('.header_wrapper').appendChild(header)
+    appContainer.querySelector('.footer_wrapper').appendChild(footer)
+
+    return appContainer
   }
 }
