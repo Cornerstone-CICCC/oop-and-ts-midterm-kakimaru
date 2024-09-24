@@ -19,7 +19,7 @@ export class ProductList extends Component {
 
   render() {
     const productList = document.createElement("div");
-    productList.className = "product-list";
+    productList.className = "product_list";
     productList.innerHTML = "";
 
     this.state.products.forEach((productData) => {

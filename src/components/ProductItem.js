@@ -12,15 +12,18 @@ export class ProductItem extends Component {
 
   render() {
     const product = document.createElement('div')
+    product.className = 'product_item'
     product.innerHTML = `
-      <img src="${this.props.productData.image}" alt="${this.props.productData.title}" class='product-image' />
-      <h3 class='product-title'>${this.props.productData.title}</h3>
-      <p class='product-desc'>${this.props.productData.description}</p>
-      <p>$ ${this.props.productData.price}</p>
-      <button class='product-addBtn'>Add to Cart</button>
+      <div class='product_image-wrapper'>
+        <img src="${this.props.productData.image}" alt="${this.props.productData.title}" class='product_image' />
+      </div>
+      <h3 class='product_title'>${this.props.productData.title}</h3>
+      <p class='product_desc'>${this.props.productData.description}</p>
+      <p class='product_price'>$ ${this.props.productData.price}</p>
+      <button class='product_addBtn'>Add to Cart</button>
     `
 
-    product.querySelector('.product-addBtn').addEventListener('click', this.handleAddToCart)
+    product.querySelector('.product_addBtn').addEventListener('click', this.handleAddToCart)
 
     return product
   }

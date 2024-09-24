@@ -12,7 +12,7 @@ export class App extends Component {
     <div class='header_wrapper'></div>
     <div class='content_wrapper'>
       <main>
-        <h1>Shop</h1>
+        <h1 class='main_title'>Today's items</h1>
         <div class='cart'></div>
       </main>
     </div>

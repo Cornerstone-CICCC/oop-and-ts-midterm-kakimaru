@@ -4,7 +4,7 @@ export class Footer extends Component {
   render() {
     const footer = document.createElement('footer')
     footer.innerHTML = `
-      <p>Copy right 2024</p>
+      <p>©2024 🐢 Shop</p>
     `
 
     return footer

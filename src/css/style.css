@@ -1,27 +1,177 @@
-/* YOUR CSS HERE */
-.container {
-  max-width: 1280px;
-  width: 100%;
-  padding: 16px;
-  margin: 0 auto;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+* {
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul, nav {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{
+  text-decoration: none;
+}
+
+/* end */
+
+:root {
+  --color-white:  #ffffff;
+  --color-black:  #000000;
+
+  --color-primary-10: #c7ddce;
+  --color-primary-20: #8fbc9f;
+  --color-primary-30: #569b72;
+  --color-primary-50: #007a47;
+  --color-primary-60: #115b36;
+  --color-primary-70: #133d26;
+  --color-primary-80: #102217;
 }
 
 
-.product-list {
+/* all */
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+
+main {
+  padding: 40px 16px 40px;
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.main_title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+
+/* header */
+.header_wrapper {
+  padding: 16px;
+  background-color: var(--color-white);
+  box-shadow: 0px 4px 24px 0px rgba(0,0,0,0.08);;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header_logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-primary-60);
+  transition: all 0.3s;
+}
+
+.header_logo:hover {
+  opacity: 0.7;
+}
+
+.header_link {
+  font-size: 14px;
+  color: var(--color-black);
+  transition: all 0.3s;
+}
+
+.header_link:hover {
+  color: var(--color-primary-60);
+}
+
+
+/* product */
+.product_list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 40px 24px;
 }
 
+.product_item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
 
-.product-image {
-  max-width: 100%;
-  object-fit: contain;
+.product_image-wrapper {
+  max-width: 80%;
+  overflow: hidden;
   aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  margin-bottom: 12px;
 }
 
-.product-title {
+.product_image {
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  aspect-ratio: 1 / 1;
+  transition: all 0.3s;
+}
+
+.product_image:hover  {
+  transform: scale(1.2);
+}
+
+.product_title {
+  width: 100%;
+  height: 40px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
   overflow: hidden;
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -29,7 +179,10 @@
   -webkit-line-clamp: 2;
 }
 
-.product-desc {
+.product_desc {
+  width: 100%;
+  font-size: 12px;
+  line-height: 140%;
   overflow: hidden;
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -37,7 +190,27 @@
   -webkit-line-clamp: 2;
 }
 
-.product-addBtn {}
+.product_price {
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+  padding: 4px 0;
+}
+
+.product_addBtn {
+  background-color: var(--color-primary-60);
+  color: var(--color-white);
+  border: none;
+  padding: 8px 16px;
+  width: 100%;
+  border-radius: 2px;
+  font-size: 12px;
+}
+
+.product_addBtn:hover {
+  cursor: pointer;
+  
+}
 
 
 /* Inside cart  */
@@ -71,4 +244,14 @@
 .cart-counter {
   display: flex;
   gap: 8px;
+}
+
+/* footer */
+footer {
+  padding: 16px;
+}
+
+footer p {
+  font-size: 12px;
+  text-align: center;
 }
