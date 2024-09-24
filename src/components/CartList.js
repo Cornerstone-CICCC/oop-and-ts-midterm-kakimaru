@@ -8,9 +8,12 @@ export class CartList extends Component {
     this.productListEl = null;
     this.totalPriceEl = null;
     this.totalCountEl = null;
+    // this.cartEl = null
 
     this.updateCart = this.updateCart.bind(this)
     this.props.cartContext.subscribe(this.updateCart)
+
+    this.handleCloseCart = this.handleCloseCart.bind(this)
   }
 
   updateCart(cart) {
@@ -30,24 +33,48 @@ export class CartList extends Component {
       totalCount += item.count
     })
 
-    this.totalPriceEl.textContent = `Total: $ ${totalPrice.toFixed(2)}`
-    this.totalCountEl.textContent = `Total items: ${totalCount}`
-    
+    this.totalPriceEl.innerHTML = `
+      <p class='cart_totalTitle'><span class='cart_totalText'>Total :</span> $ ${totalPrice.toFixed(2)}</p>
+    `
+    this.totalCountEl.innerHTML = `
+      <p class='cart_totalTitle'><span class='cart_totalText'>Items :</span> ${totalCount}</p>
+    `
+
+    // this.cartEl = this.productListEl.closest('.cart_wrapper')
+    const cartEl = document.querySelector('.cart_wrapper');
+    if(this.state.cart.length > 0) 
+      cartEl.classList.add('is-visible')
+    else if (this.state.cart.length === 0)
+      cartEl.classList.remove('is-visible')
+  }
+
+  handleCloseCart() {
+    const cartEl = document.querySelector('.cart_wrapper');
+    if(cartEl)
+      cartEl.classList.toggle('is-visible')
   }
 
 
   render() {
     const cartEl = document.createElement('div')
+    cartEl.className = 'cart'
     cartEl.innerHTML = `
-      <h3>Your Cart</h3>
-      <ul class='cart-list'></ul>
-      <p class='cart-totalPrice'></p>
-      <p class='cart-totalCount'></p>
+      <div class='cart_titleWrap'>
+        <h3 class="cart_title">Your Cart</h3>
+        <span class='cart_closeBtn'>&#x2715;</span>
+      </div>
+      <ul class='cart_list'></ul>
+      <div class='cart_totalInfo'>
+        <p class='cart_totalPrice'></p>
+        <p class='cart_totalCount'></p>
+      </div>
     `
 
     this.productListEl = cartEl.querySelector('ul')
-    this.totalPriceEl = cartEl.querySelector('.cart-totalPrice')
-    this.totalCountEl = cartEl.querySelector('.cart-totalCount')
+    this.totalPriceEl = cartEl.querySelector('.cart_totalPrice')
+    this.totalCountEl = cartEl.querySelector('.cart_totalCount')
+
+    cartEl.querySelector('.cart_closeBtn').addEventListener('click', this.handleCloseCart)
 
     return cartEl;
   }

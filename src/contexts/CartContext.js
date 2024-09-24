@@ -37,7 +37,10 @@ export class CartContext {
     this.notifyListeners();
   }
 
-  removeProduct(id) {}
+  removeProduct(id) {
+    this.cart = this.cart.filter(item => item.id !== id)
+    this.notifyListeners();
+  }
 
   getCart() {
     return this.cart;

@@ -13,7 +13,7 @@ export class App extends Component {
     <div class='content_wrapper'>
       <main>
         <h1 class='main_title'>Today's items</h1>
-        <div class='cart'></div>
+        <div class='cart_wrapper'></div>
       </main>
     </div>
     <div class='footer_wrapper'></div>
@@ -31,7 +31,7 @@ export class App extends Component {
 
     const cart = new CartList({ cartContext: this.props.cartContext }).render()
 
-    appContainer.querySelector('.cart').appendChild(cart)
+    appContainer.querySelector('.cart_wrapper').appendChild(cart)
 
     
 
