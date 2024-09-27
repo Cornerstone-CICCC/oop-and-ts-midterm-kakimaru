@@ -6,6 +6,8 @@ export class CartItem extends Component {
     this.handlerPlusQuantity = this.handlerPlusQuantity.bind(this)
     this.handlerMinusQuantity = this.handlerMinusQuantity.bind(this)
     this.handlerRemoveProduct = this.handlerRemoveProduct.bind(this)
+
+    this.counterNumEl = null
   }
 
   handlerPlusQuantity() {
@@ -20,8 +22,13 @@ export class CartItem extends Component {
     this.props.cartContext.removeProduct(this.props.item.id)
   }
 
+  updateItemDisplay() {
+    this.counterNumEl.textContent = this.props.item.count
+  }
+
   render() {
     const cartItem = document.createElement('div')
+    cartItem.setAttribute('data-id', this.props.item.id)
     cartItem.className = 'cart_item'
     cartItem.innerHTML = ` 
       <img class="cart_image" src="${this.props.item.image}" alt="${this.props.item.title}" />
@@ -38,6 +45,8 @@ export class CartItem extends Component {
         <button class="cart_removeBtn">Remove</button>
       </div>
     `
+
+    this.counterNumEl = cartItem.querySelector('.cart_counterNum')
 
     cartItem.querySelector('.cart_minusBtn').addEventListener('click', this.handlerMinusQuantity)
     cartItem.querySelector('.cart_plusBtn').addEventListener('click', this.handlerPlusQuantity)

@@ -8,7 +8,7 @@ export class CartList extends Component {
     this.productListEl = null;
     this.totalPriceEl = null;
     this.totalCountEl = null;
-    // this.cartEl = null
+    this.cartNewItems = {};
 
     this.updateCart = this.updateCart.bind(this)
     this.props.cartContext.subscribe(this.updateCart)
@@ -23,12 +23,19 @@ export class CartList extends Component {
     let totalPrice = 0
     let totalCount = 0
 
-    this.state.cart.map(item => {
-      const cartItem = new CartItem({
-        item,
-        cartContext: this.props.cartContext,
-      });
-      this.productListEl.appendChild(cartItem.render());
+    this.state.cart.forEach(item => {
+      const existingCartItemEl = this.productListEl.querySelector('[data-id="${item.id}"]')
+      if(existingCartItemEl) {
+        const cartNewItem = this.cartNewItems[item.id]
+        cartNewItem.updateItemDisplay(item);
+      } else {
+        const cartItem = new CartItem({
+          item,
+          cartContext: this.props.cartContext,
+        });
+        this.cartNewItems[item.id] = cartItem
+        this.productListEl.appendChild(cartItem.render());
+      }
       totalPrice += item.price * item.count
       totalCount += item.count
     })
@@ -40,7 +47,6 @@ export class CartList extends Component {
       <p class='cart_totalTitle'><span class='cart_totalText'>Items :</span> ${totalCount}</p>
     `
 
-    // this.cartEl = this.productListEl.closest('.cart_wrapper')
     const cartEl = document.querySelector('.cart_wrapper');
     if(this.state.cart.length > 0) 
       cartEl.classList.add('is-visible')
