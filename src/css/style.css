@@ -79,7 +79,7 @@ body {
 
 
 main {
-  padding: 40px 16px 40px;
+  padding: 40px 16px 140px;
   max-width: 1080px;
   width: 100%;
   margin: 0 auto;
@@ -90,6 +90,13 @@ main {
   font-weight: bold;
   margin-bottom: 24px;
 }
+
+@media screen and (min-width: 640px) {
+  main {
+    padding: 40px 16px 220px;
+  }
+}
+
 
 
 /* header */
@@ -130,6 +137,7 @@ header {
 
 .header_link:hover {
   color: var(--color-primary-60);
+  cursor: pointer;
 }
 
 
@@ -347,8 +355,14 @@ header {
   font-size: 12px;
 }
 
+.cart_countBtn:hover {
+  cursor: pointer;
+  background-color: var(--color-primary-10);
+}
+
 .cart_removeBtn:hover {
   cursor: pointer;
+  opacity: 0.7;
 }
 
 @media screen and (min-width: 640px) {
